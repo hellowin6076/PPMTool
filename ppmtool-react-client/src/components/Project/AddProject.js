@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { createProject } from "../../actions/projectActions";
 
 class AddProject extends Component {
   constructor() {
@@ -6,7 +9,7 @@ class AddProject extends Component {
 
     this.state = {
       projectName: "",
-      prjectIdentifier: "",
+      projectIdentifier: "",
       description: "",
       start_date: "",
       end_date: "",
@@ -24,13 +27,13 @@ class AddProject extends Component {
     e.preventDefault();
     const newProject = {
       projectName: this.state.projectName,
-      prjectIdentifier: this.state.prjectIdentifier,
+      projectIdentifier: this.state.projectIdentifier,
       description: this.state.description,
       start_date: this.state.start_date,
       end_date: this.state.end_date,
     };
 
-    console.log(newProject);
+    this.props.createProject(newProject, this.props.history);
   }
   render() {
     return (
@@ -56,8 +59,8 @@ class AddProject extends Component {
                     type="text"
                     className="form-control form-control-lg"
                     placeholder="Unique Project ID"
-                    name="prjectIdentifier"
-                    value={this.state.prjectIdentifier}
+                    name="projectIdentifier"
+                    value={this.state.projectIdentifier}
                     onChange={this.onChange}
                   />
                 </div>
@@ -103,4 +106,8 @@ class AddProject extends Component {
   }
 }
 
-export default AddProject;
+AddProject.propTypes = {
+  createProject: PropTypes.func.isRequired,
+};
+
+export default connect(null, { createProject })(AddProject);
