@@ -15,6 +15,7 @@ class UpdateProject extends Component {
       description: "",
       start_date: "",
       end_date: "",
+      created_At: "",
       errors: {},
     };
     this.onChange = this.onChange.bind(this);
@@ -32,6 +33,7 @@ class UpdateProject extends Component {
       description,
       start_date,
       end_date,
+      created_At,
     } = nextProps.project;
 
     this.setState({
@@ -41,6 +43,7 @@ class UpdateProject extends Component {
       description,
       start_date,
       end_date,
+      created_At,
     });
   }
 
@@ -63,6 +66,7 @@ class UpdateProject extends Component {
       description: this.state.description,
       start_date: this.state.start_date,
       end_date: this.state.end_date,
+      created_At: this.state.created_At,
     };
 
     this.props.createProject(updateProject, this.props.history);
@@ -124,7 +128,10 @@ class UpdateProject extends Component {
                     type="date"
                     className="form-control form-control-lg"
                     name="start_date"
-                    value={this.state.start_date}
+                    //Warning: `value` prop on `input` should not be null.
+                    //Consider using an empty string to clear the component or `undefined` for uncontrolled components.
+                    //위의 경고를 없애기위해 null 들어가는거 방지하기위해 || "" 를 추가
+                    value={this.state.start_date || ""}
                     onChange={this.onChange}
                   />
                 </div>
@@ -134,7 +141,7 @@ class UpdateProject extends Component {
                     type="date"
                     className="form-control form-control-lg"
                     name="end_date"
-                    value={this.state.end_date}
+                    value={this.state.end_date || ""}
                     onChange={this.onChange}
                   />
                 </div>
