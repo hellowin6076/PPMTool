@@ -64,7 +64,7 @@ class AddProjectTask extends Component {
               <h4 className="display-4 text-center">Add Project Task</h4>
               <p className="lead text-center">Project Name + Project Code</p>
               <form onSubmit={this.onSubmit}>
-                <div className="form-group m-1">
+                <div className="mb-3">
                   <input
                     type="text"
                     className={classnames("form-control form-control-lg", {
@@ -79,7 +79,7 @@ class AddProjectTask extends Component {
                     <div className="invalid-feedback">{errors.summary}</div>
                   )}
                 </div>
-                <div className="form-group m-1">
+                <div className="mb-3">
                   <textarea
                     className="form-control form-control-lg"
                     placeholder="Acceptance Criteria"
@@ -89,7 +89,7 @@ class AddProjectTask extends Component {
                   ></textarea>
                 </div>
                 <h6>Due Date</h6>
-                <div className="form-group m-1">
+                <div className="mb-3">
                   <input
                     type="date"
                     className="form-control form-control-lg"
@@ -98,7 +98,7 @@ class AddProjectTask extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-                <div className="form-group m-1">
+                <div className="mb-3">
                   <select
                     className="form-control form-control-lg"
                     name="priority"
@@ -112,7 +112,7 @@ class AddProjectTask extends Component {
                   </select>
                 </div>
 
-                <div className="form-group m-1">
+                <div className="mb-3">
                   <select
                     className="form-control form-control-lg"
                     name="status"

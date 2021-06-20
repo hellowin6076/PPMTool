@@ -55,7 +55,7 @@ class AddProject extends Component {
                 <h5 className="display-4 text-center">Create Project form</h5>
                 <hr />
                 <form onSubmit={this.onSubmit}>
-                  <div className="form-group m-1">
+                  <div className="mb-3">
                     <input
                       type="text"
                       className={classnames("form-control form-control-lg", {
@@ -72,7 +72,7 @@ class AddProject extends Component {
                       </div>
                     )}
                   </div>
-                  <div className="form-group m-1">
+                  <div className="mb-3">
                     <input
                       type="text"
                       className={classnames("form-control form-control-lg", {
@@ -89,7 +89,7 @@ class AddProject extends Component {
                       </div>
                     )}
                   </div>
-                  <div className="form-group m-1">
+                  <div className="mb-3">
                     <textarea
                       className={classnames("form-control form-control-lg", {
                         "is-invalid": errors.description,
@@ -106,7 +106,7 @@ class AddProject extends Component {
                     )}
                   </div>
                   <h6>Start Date</h6>
-                  <div className="form-group m-1">
+                  <div className="mb-3">
                     <input
                       type="date"
                       className="form-control form-control-lg"
@@ -116,7 +116,7 @@ class AddProject extends Component {
                     />
                   </div>
                   <h6>Estimated End Date</h6>
-                  <div className="form-group m-1">
+                  <div className="mb-3">
                     <input
                       type="date"
                       className="form-control form-control-lg"
