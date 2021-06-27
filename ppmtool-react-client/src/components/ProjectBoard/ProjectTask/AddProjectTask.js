@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import classnames from "classnames";
 import { addProjectTask } from "../../../actions/backlogActions";
 import PropTypes from "prop-types";
+import { clearErrors } from "../../../actions/commonActions";
 
 class AddProjectTask extends Component {
   constructor(props) {
@@ -27,6 +28,10 @@ class AddProjectTask extends Component {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
+  }
+
+  componentWillUnmount() {
+    this.props.clearErrors();
   }
 
   onChange(e) {
@@ -149,4 +154,6 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps, { addProjectTask })(AddProjectTask);
+export default connect(mapStateToProps, { addProjectTask, clearErrors })(
+  AddProjectTask
+);

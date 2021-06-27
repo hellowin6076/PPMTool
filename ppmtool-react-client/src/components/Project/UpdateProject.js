@@ -3,6 +3,7 @@ import { getProject, createProject } from "../../actions/projectActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classnames from "classnames";
+import { clearErrors } from "../../actions/commonActions";
 
 class UpdateProject extends Component {
   constructor() {
@@ -50,6 +51,10 @@ class UpdateProject extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.getProject(id, this.props.history);
+  }
+
+  componentWillUnmount() {
+    this.props.clearErrors();
   }
 
   onChange(e) {
@@ -172,6 +177,8 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps, { getProject, createProject })(
-  UpdateProject
-);
+export default connect(mapStateToProps, {
+  getProject,
+  createProject,
+  clearErrors,
+})(UpdateProject);
