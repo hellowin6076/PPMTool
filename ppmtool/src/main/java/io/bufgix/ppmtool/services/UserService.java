@@ -17,7 +17,6 @@ public class UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public User saveUser (User newUser){
-        newUser.setPassword(bCryptPasswordEncoder.encode(newUser.getPassword()));
 
         try{
             newUser.setPassword(bCryptPasswordEncoder.encode(newUser.getPassword()));
