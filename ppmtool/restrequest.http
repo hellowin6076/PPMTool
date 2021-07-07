@@ -1,0 +1,97 @@
+@baseurl = http://localhost:8080
+@pjidex = SV001
+@pjidex2 = SV002
+@pjidex3 = SV003
+
+
+
+###Create User
+POST {{baseurl}}/api/users/register
+content-type : application/json;
+
+{
+    "username":"test7@test.com",
+    "fullName":"lee huimk",
+    "password":"testpass",
+    "confirmPassword":"testpass"
+}
+
+###Login
+POST {{baseurl}}/api/users/login HTTP/1.1
+content-type: application/json;
+
+{
+    "username":"test7@test.com",
+    "password":"testpass"
+}
+
+@token =eyJhbGciOiJIUzUxMiJ9.eyJmdWxsTmFtZSI6ImxlZSBodWltayIsImlkIjoiMSIsImV4cCI6MTYyNTY2NDk4OSwiaWF0IjoxNjI1NjY0Njg5LCJ1c2VybmFtZSI6InRlc3Q3QHRlc3QuY29tIn0.b2AJdG-wP6D9NqLLFnudgoMpMVBmPXQ08-eOwt-OGb-Omm3NLrIc5w9kgF2XLJi_ZFKNzURgDwLWHVniF1jpkw
+###POST Create New Project
+POST {{baseurl}}/api/project HTTP/1.1
+content-type : application/json;
+Authorization: Bearer {{token}}
+
+{
+    "projectName":"ProjectNAME",
+    "projectIdentifier":"{{pjidex}}",
+    "description":"Project description"
+}
+
+###Get Find by Identifier
+GET  {{baseurl}}/api/project/{{pjidex}} HTTP/1.1
+content-type : application/json;
+Authorization: Bearer {{token}}
+
+###Get Find All Project
+GET  {{baseurl}}/api/project/all HTTP/1.1
+content-type : application/json;
+Authorization: Bearer {{token}}
+
+###Delete by Identifier
+DELETE {{baseurl}}/api/project/{{pjidex}} HTTP/1.1
+content-type : application/json;
+Authorization: Bearer {{token}}
+
+###POST Create New ProjectTask
+POST {{baseurl}}/api/backlog/{{pjidex}}
+content-type : application/json;
+Authorization: Bearer {{token}}
+
+{
+    "summary":"Testtest33"
+}
+
+###Get All ProjectTask
+GET {{baseurl}}/api/backlog/{{pjidex}}
+content-type : application/json;
+Authorization: Bearer {{token}}
+
+@pjseq = SV001-4
+###Get ProjectTask
+GET {{baseurl}}/api/backlog/{{pjidex}}/{{pjseq}}
+content-type : application/json;
+Authorization: Bearer {{token}}
+
+###Update ProjectTask
+PATCH  {{baseurl}}/api/backlog/{{pjidex}}/{{pjseq}}
+content-type : application/json;
+Authorization: Bearer {{token}}
+
+{
+  "id": 3,
+  "projectSequence": "SV001-2",
+  "summary": "test1-2",
+  "acceptanceCriteria": null,
+  "status": "TO_DO",
+  "priority": 3,
+  "dueDate": null,
+  "projectIdentifier": "SV001",
+  "created_At": "2021-06-16T07:09:59.488+00:00",
+  "updated_At": null
+}
+
+###Delete ProjectTask
+DELETE  {{baseurl}}/api/backlog/{{pjidex}}/SV001-8
+content-type : application/json;
+Authorization: Bearer {{token}}
+
