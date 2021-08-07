@@ -1,6 +1,6 @@
 import axios from "axios";
 import setJWTToken from "../securityUtils/setJWTToken";
-import { GET_ERRORS } from "./types";
+import { GET_ERRORS, SET_CURRENT_USER } from "./types";
 import jwt_decode from "jwt-decode";
 
 export const createNewUser = (newUser, history) => async (dispatch) => {
@@ -33,9 +33,9 @@ export const login = (LoginRequest) => async (dispatch) => {
       payload: decoded,
     });
   } catch (err) {
-    //dispatch({
-    //  type: GET_ERRORS,
-    //  payload: err.response.data,
-    // });
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data,
+    });
   }
 };
